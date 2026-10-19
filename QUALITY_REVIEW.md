@@ -6,7 +6,7 @@ Homepage opens with a clear software/ML positioning statement, UMD credentials, 
 
 ## Technical integrity
 
-The metrics were carried over from the attached résumé and project repositories. Project disclaimers are conspicuous. InterceptIQ's synthetic shipment data and Sentinel's simulated engine telemetry are not presented as commercial deployments; FocusMate's pilot estimate remains qualified. Visuals are conceptual SVGs rather than fabricated screenshots.
+Project disclaimers are conspicuous. InterceptIQ's synthetic shipment data and Sentinel's simulated engine telemetry are not presented as commercial deployments. FocusMate is described as face-presence detection, with a 200 ms client submission interval; its 90.5% figure is explicitly a 200-frame face-presence benchmark. The 30 FPS and distraction-reduction claims were removed because the implementation and repository evidence do not substantiate them. Visuals are labeled conceptual rather than presented as measured data traces. InterceptIQ's public demo is explicitly separated from its local service stack.
 
 ## Design / accessibility
 
@@ -18,4 +18,6 @@ Removed Next.js imports, directives, metadata APIs, special routes, and runtime.
 
 ## Validation boundaries
 
-Verified syntax with a TypeScript parser, checked expected files/link targets, and confirmed the public résumé text does not contain the private phone number. **npm package installation was unavailable in this execution environment (npm registry DNS errors), so a real `npm run build`/`npm run lint`/browser test must be performed on your computer before deployment.** This is a known validation limitation, not an assertion that the build has passed.
+The original review could not install packages. GitHub subsequently recorded a successful Vercel deployment for commit 40e16e1 on October 9, 2026; this does not establish that every page was browser-tested.
+
+The interview corrections include executable tests for root/subpath routes, explicit index.html URLs, asset paths, deployment origin validation, and canonical/share-image paths. These tests pass locally. Package installation remains blocked by npm-registry DNS in the editing environment, so local lint/build/browser verification is not claimed. The added GitHub Actions workflow runs tests, lint, and production builds for both supported deployment bases; its result is recorded in GitHub checks.

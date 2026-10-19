@@ -18,7 +18,7 @@ export function HeroEvidenceVisual() {
     <div className="technical-frame hero-evidence" aria-label="Conceptual engineering evidence visualization">
       <div className="technical-frame-labels">
         <span>SYSTEMS / ML / CV</span>
-        <span>MODEL EVIDENCE</span>
+        <span>CONCEPTUAL PIPELINE</span>
       </div>
       <svg viewBox="0 0 620 390" role="img" aria-labelledby="hero-evidence-title" className="h-auto w-full">
         <title id="hero-evidence-title">Conceptual traces showing input, model, evaluation, and system output</title>
@@ -71,7 +71,7 @@ export function SentinelVisual({ compact = false }: { compact?: boolean }) {
     <div className={`technical-frame ${compact ? "technical-frame-compact" : ""}`}>
       <div className="technical-frame-labels">
         <span>NASA C-MAPSS / FD001</span>
-        <span>HELD-OUT TEST</span>
+        <span>CONCEPTUAL / NOT A DATA TRACE</span>
       </div>
       <svg viewBox="0 0 760 470" role="img" aria-labelledby="sentinel-title" className="w-full">
         <title id="sentinel-title">Sentinel conceptual telemetry, failure horizon, and remaining useful life evidence</title>
@@ -180,7 +180,7 @@ export function InterceptIQVisual({ compact = false }: { compact?: boolean }) {
 }
 
 export function FocusMateVisual({ compact = false }: { compact?: boolean }) {
-  const stages = ["BROWSER", "SOCKET", "OPENCV", "STATE", "UI"];
+  const stages = ["BROWSER", "SOCKET", "FACE", "STATE", "UI"];
   return (
     <div className={`technical-frame ${compact ? "technical-frame-compact" : ""}`}>
       <div className="technical-frame-labels">
@@ -188,7 +188,7 @@ export function FocusMateVisual({ compact = false }: { compact?: boolean }) {
         <span>ACCESSIBILITY</span>
       </div>
       <svg viewBox="0 0 760 430" role="img" aria-labelledby="focus-title" className="w-full">
-        <title id="focus-title">FocusMate real-time webcam, WebSocket, computer vision, state, and interface response pipeline</title>
+        <title id="focus-title">FocusMate conceptual webcam, WebSocket, face detection, and blur overlay pipeline</title>
         <Grid id="focus-grid" />
         <rect width="760" height="430" fill="url(#focus-grid)" />
 
@@ -209,16 +209,16 @@ export function FocusMateVisual({ compact = false }: { compact?: boolean }) {
           {[
             [94, 84], [110, 82], [126, 87], [151, 87], [167, 82], [183, 84], [141, 105], [118, 128], [141, 134], [164, 128], [101, 112], [181, 112]
           ].map(([x, y], index) => <circle key={index} cx={x} cy={y} r="2.2" fill="#55c7ff" />)}
-          <text x="18" y="185" fill="#7c8998" fontSize="9" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace">FACIAL-MARKER ABSTRACTION</text>
+          <text x="18" y="185" fill="#7c8998" fontSize="9" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace">CONCEPTUAL FACE ILLUSTRATION</text>
         </g>
 
         <g transform="translate(360 164)" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace">
           <rect width="352" height="205" rx="11" fill="#0d1117" stroke="#94a3b8" strokeOpacity="0.18" />
-          <text x="18" y="26" fill="#7c8998" fontSize="9" letterSpacing="1.1">ATTENTION STATE / EXAMPLE</text>
+          <text x="18" y="26" fill="#7c8998" fontSize="9" letterSpacing="1.1">ILLUSTRATIVE FLOW / NOT LIVE DATA</text>
           {[
-            [62, "FACE DETECTED", 0.88],
-            [101, "FOCUS SIGNAL", 0.72],
-            [140, "DISTRACTION", 0.31],
+            [62, "FRAME INPUT", 0.88],
+            [101, "FACE DETECTION", 0.72],
+            [140, "UI RESPONSE", 0.31],
           ].map(([y, label, value]) => (
             <g key={String(label)}>
               <text x="18" y={Number(y)} fill="#dce4ec" fontSize="9">{label}</text>
@@ -227,7 +227,7 @@ export function FocusMateVisual({ compact = false }: { compact?: boolean }) {
             </g>
           ))}
           <line x1="18" y1="160" x2="334" y2="160" stroke="#94a3b8" strokeOpacity="0.14" />
-          <text x="18" y="184" fill="#55c7ff" fontSize="10">LOW-STIMULATION RESPONSE</text>
+          <text x="18" y="184" fill="#55c7ff" fontSize="10">DISMISSIBLE BLUR OVERLAY</text>
         </g>
       </svg>
     </div>

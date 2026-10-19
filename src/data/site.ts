@@ -1,9 +1,11 @@
+import { withBase } from "@/lib/paths";
+
 export const site = {
   name: "Nihal Rao",
   email: "nrao1210@terpmail.umd.edu",
   github: "https://github.com/NRao0158",
   linkedin: "https://www.linkedin.com/in/nihalraoumdcs",
-  resume: "/resume.pdf",
+  resume: withBase("/resume.pdf"),
 };
 
 export const skills = [

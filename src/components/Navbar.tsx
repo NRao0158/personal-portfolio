@@ -1,13 +1,14 @@
+import { withBase } from "@/lib/paths";
 import { useEffect, useState } from "react";
 import { site } from "@/data/site";
 import { Close, Github, Linkedin, Menu } from "@/components/Icons";
 
 const navItems = [
-  { href: "/#work", label: "Work", id: "work" },
-  { href: "/#experience", label: "Experience", id: "experience" },
-  { href: "/#about", label: "About", id: "about" },
-  { href: site.resume, label: "Resume", id: "resume" },
-  { href: "/#contact", label: "Contact", id: "contact" },
+  { href: withBase("/#work"), label: "Work", id: "work" },
+  { href: withBase("/#experience"), label: "Experience", id: "experience" },
+  { href: withBase("/#about"), label: "About", id: "about" },
+  { href: site.resume, label: "View résumé", id: "resume" },
+  { href: withBase("/#contact"), label: "Contact", id: "contact" },
 ];
 
 export function Navbar() {
@@ -69,7 +70,7 @@ export function Navbar() {
     >
       <div className="site-container flex h-full items-center justify-between gap-5">
         <a
-          href="/"
+          href={withBase("/")}
           className="focus-ring text-[18px] font-semibold tracking-[-0.025em] text-[var(--text-primary)] transition-colors hover:text-[var(--accent)]"
         >
           Nihal Rao
@@ -83,11 +84,8 @@ export function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              download={
-                item.id === "resume"
-                  ? "Nihal_Rao_Resume.pdf"
-                  : undefined
-              }
+              target={item.id === "resume" ? "_blank" : undefined}
+              rel={item.id === "resume" ? "noreferrer" : undefined}
               className={`nav-link focus-ring text-[15px] font-medium ${
                 active === item.id ? "nav-link-active" : ""
               }`}
@@ -162,11 +160,8 @@ export function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              download={
-                item.id === "resume"
-                  ? "Nihal_Rao_Resume.pdf"
-                  : undefined
-              }
+              target={item.id === "resume" ? "_blank" : undefined}
+              rel={item.id === "resume" ? "noreferrer" : undefined}
               className="focus-ring rounded-lg px-3 py-3.5 text-[17px] font-medium text-[var(--text-primary)] transition-colors hover:bg-[var(--surface)]"
               onClick={() => setOpen(false)}
               tabIndex={open ? 0 : -1}

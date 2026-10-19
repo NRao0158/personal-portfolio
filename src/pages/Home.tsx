@@ -90,11 +90,12 @@ export default function Home() {
 
               <a
                 href={site.resume}
-                download="Nihal_Rao_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
                 className="button-secondary focus-ring text-[15px]"
               >
                 <FileText className="size-4" />
-                Resume
+                View résumé
               </a>
             </div>
 
@@ -373,11 +374,12 @@ export default function Home() {
 
               <a
                 href={site.resume}
-                download="Nihal_Rao_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
                 className="button-tertiary focus-ring text-[15px]"
               >
                 <FileText className="size-4" />
-                Resume
+                View résumé
               </a>
             </div>
           </Reveal>

@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/paths";
 import type { Project } from "@/data/projects";
 import { ArrowRight, ExternalLink, Github } from "@/components/Icons";
 import { ProjectVisual } from "@/components/TechnicalVisuals";
@@ -8,7 +9,7 @@ export function ProjectCaseStudy({ project, nextProject }: { project: Project; n
     <main id="main-content" className="pt-24 md:pt-28">
       <section className="site-container py-16 md:py-24">
         <Reveal>
-          <a href="/#work" className="focus-ring inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)] hover:text-[var(--accent)]">
+          <a href={withBase("/#work")} className="focus-ring inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--text-muted)] hover:text-[var(--accent)]">
             ← Selected work
           </a>
           <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--accent)]">{project.caseStudy.eyebrow}</p>
@@ -25,6 +26,7 @@ export function ProjectCaseStudy({ project, nextProject }: { project: Project; n
             <a href={project.github} target="_blank" rel="noreferrer" className="button-primary focus-ring"><Github className="size-4" /> GitHub <ExternalLink className="size-3.5" /></a>
             {project.demo ? <a href={project.demo} target="_blank" rel="noreferrer" className="button-secondary focus-ring">Live demo <ExternalLink className="size-3.5" /></a> : null}
           </div>
+          {project.demoNote ? <p className="mt-5 max-w-3xl text-sm leading-6 text-[var(--text-secondary)]">{project.demoNote}</p> : null}
         </Reveal>
       </section>
 
@@ -83,7 +85,7 @@ export function ProjectCaseStudy({ project, nextProject }: { project: Project; n
             <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-[var(--text-primary)] md:text-5xl">{nextProject.title}</h2>
             <p className="mt-3 text-[var(--text-secondary)]">{nextProject.descriptor}</p>
           </div>
-          <a className="button-primary focus-ring" href={`/projects/${nextProject.slug}/`}>View case study <ArrowRight className="size-4" /></a>
+          <a className="button-primary focus-ring" href={withBase(`/projects/${nextProject.slug}/`)}>View case study <ArrowRight className="size-4" /></a>
         </div>
       </section>
     </main>
