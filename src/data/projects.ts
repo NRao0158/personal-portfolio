@@ -22,6 +22,7 @@ export type Project = {
   proofLine: string[];
   github: string;
   demo?: string;
+  demoNote?: string;
   disclaimer: string;
   caseStudy: {
     eyebrow: string;
@@ -137,6 +138,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/NRao0158/interceptiq-shipment-risk",
     demo: "https://nihal-interceptiq.streamlit.app/",
+    demoNote: "The public Streamlit demo shows predictions and simulated replay. The API, PostgreSQL database, and RabbitMQ queue run locally; the demo is disconnected from the service database.",
     disclaimer: "All shipment data and operational scenarios are synthetic.",
     caseStudy: {
       eyebrow: "Machine learning · Backend systems",
@@ -151,6 +153,7 @@ export const projects: Project[] = [
           body: [
             "Events enter through FastAPI and are persisted before downstream processing. A PostgreSQL transactional outbox coordinates durable state with RabbitMQ publication, while consumers are designed to tolerate redelivery.",
             "The system also handles duplicate ingestion, late events, recomputation, alert acknowledgement, alert retraction, and broker outages.",
+            "The public Streamlit demo is a separate prediction and replay interface. The API, PostgreSQL database, and RabbitMQ queue run locally, and the public demo does not connect to the service database.",
           ],
         },
         {
@@ -214,28 +217,27 @@ export const projects: Project[] = [
     category: "Computer vision · Accessibility",
     descriptor: "Real-time computer vision for cognitive accessibility",
     summary:
-      "A full-stack study application designed to provide low-stimulation support when sustained distraction is detected. The browser streams webcam frames to a Flask-SocketIO backend for OpenCV-based analysis and adaptive interface feedback.",
+      "A full-stack study prototype that uses face presence as a rough proxy for attention. A React client sends webcam images to a Flask-SocketIO backend for OpenCV face detection and displays a dismissible blur overlay when no face is detected.",
     metrics: [
-      { value: "90.5%", label: "Detection benchmark" },
-      { value: "~30", label: "FPS processing" },
-      { value: "~40%", label: "Lower distraction intervals", detail: "small pilot estimate" },
+      { value: "90.5%", label: "Face-presence benchmark", detail: "181 of 200 test frames" },
+      { value: "~5", label: "Frame submissions / sec", detail: "200 ms client interval; not measured throughput" },
     ],
     stack: ["React", "Python", "OpenCV", "Flask", "Socket.IO", "Figma"],
     proofLine: [
       "Real-time CV",
       "WebSockets",
       "Client/server state",
-      "Low-stimulation UX",
+      "Dismissible overlay",
     ],
     github: "https://github.com/NRao0158/focusmate-ai",
     disclaimer:
       "Portfolio accessibility project; not a clinically validated treatment or medical device.",
     caseStudy: {
       eyebrow: "Computer vision · Accessibility",
-      headline: "A low-stimulation interface driven by real-time computer vision.",
+      headline: "A webcam-based face-presence prototype with adaptive interface feedback.",
       intro: [
-        "FocusMate is a full-stack study application intended to provide cognitive support when sustained distraction is detected.",
-        "A React frontend captures webcam frames and sends them to a Flask-SocketIO backend for OpenCV-based analysis. The resulting state can trigger a restrained visual response in the client.",
+        "FocusMate is a full-stack study prototype that displays a blur overlay when no face is detected in a submitted webcam image. Face presence is only a rough proxy for attention.",
+        "The React client attempts one frame submission every 200 ms (approximately five per second). A Flask-SocketIO backend applies an OpenCV Haar-cascade face detector and returns a face-present or face-absent result. The application does not implement gaze tracking or sustained-distraction timing.",
       ],
       sections: [
         {
@@ -252,11 +254,11 @@ export const projects: Project[] = [
             },
             {
               title: "OpenCV detection",
-              body: "Analyze facial-marker signals for focus state.",
+              body: "Detect whether an image contains a face using an OpenCV Haar cascade.",
             },
             {
               title: "Adaptive response",
-              body: "Trigger a restrained visual response after sustained distraction.",
+              body: "Show a dismissible blur overlay when the backend reports no detected face.",
             },
           ],
         },
@@ -264,16 +266,16 @@ export const projects: Project[] = [
           title: "What I focused on",
           items: [
             {
-              title: "Real-time processing",
-              body: "Maintaining interactive webcam analysis at approximately 30 FPS.",
+              title: "Frame submission",
+              body: "Attempt one webcam image submission every 200 ms. This scheduling rate is not a measured end-to-end processing benchmark.",
             },
             {
               title: "Client/server communication",
               body: "Streaming frames and returning state changes over WebSockets.",
             },
             {
-              title: "Low-stimulation UX",
-              body: "Avoiding unnecessarily aggressive interventions when distraction is detected.",
+              title: "Dismissible overlay",
+              body: "Provide a manual dismiss control for the blur overlay; its accessibility benefits have not been established by this implementation.",
             },
             {
               title: "Iteration",
@@ -284,8 +286,8 @@ export const projects: Project[] = [
         {
           title: "Evidence and limits",
           body: [
-            "The repository benchmark reports 90.5% facial-marker detection accuracy on 200 test frames. A small pilot analysis estimates approximately 40% lower distraction intervals with the feedback mechanism.",
-            "The pilot result is exploratory rather than clinical evidence. FocusMate is not a medical device or clinically validated ADHD treatment.",
+            "The repository benchmark report records 181 correct face-present/absent predictions out of 200 test frames (90.5%). This measures face presence, not attention, gaze, ADHD outcomes, or clinical effectiveness. The test-frame dataset is not included in the repository.",
+            "No distraction-reduction percentage is claimed here: the analysis script contains eight participant records, but the repository does not establish their collection provenance. FocusMate is not a medical device or clinically validated ADHD treatment.",
           ],
         },
       ],

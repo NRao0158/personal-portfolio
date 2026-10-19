@@ -1,11 +1,13 @@
 import Home from "@/pages/Home";
+import { portfolioPath, withBase } from "@/lib/paths";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
 import { getProject, projects } from "@/data/projects";
 
 export default function App() {
-  const match = window.location.pathname.match(/^\/projects\/([^/]+)\/?$/);
+  const path = portfolioPath(window.location.pathname);
+  const match = path?.match(/^\/projects\/([^/]+)\/?$/);
   const slug = match?.[1];
   const project = slug ? getProject(slug) : undefined;
 
@@ -16,9 +18,7 @@ export default function App() {
   const next =
     index >= 0 ? projects[(index + 1) % projects.length] : undefined;
 
-  const isHome =
-    window.location.pathname === "/" ||
-    window.location.pathname === "/index.html";
+  const isHome = path === "/";
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function App() {
             This page isn’t part of the portfolio.
           </p>
 
-          <a href="/" className="button-primary focus-ring mt-9">
+          <a href={withBase("/")} className="button-primary focus-ring mt-9">
             Back to homepage →
           </a>
         </main>

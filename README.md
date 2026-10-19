@@ -7,7 +7,7 @@ A recruiter-first portfolio built with **React 19, TypeScript, Vite 8, and Tailw
 Requirements: Node.js **22.12+** (Vite 8 works on modern Node; Node 22 recommended), npm.
 
 ```powershell
-npm install
+npm ci
 npm run dev
 ```
 
@@ -16,8 +16,7 @@ Open the address Vite prints (usually `http://localhost:5173`). The homepage, al
 ## Check and build
 
 ```powershell
-npm run lint
-npm run build
+npm run check
 npm run preview
 ```
 
@@ -48,6 +47,11 @@ The UI uses no large animation library. Motion honors `prefers-reduced-motion`. 
 
 ## Notes
 
-- All public résumé links point to the phone-redacted PDF.
+- All public résumé links open the phone-redacted PDF in a new tab for preview.
 - Fonts load from Google Fonts with system fallbacks. The site is usable without remote fonts.
-- The code uses an absolute-root asset structure suitable for a top-level Vercel domain. If hosting under a GitHub Pages repository subpath, adjust Vite's `base` option and paths.
+- Vercel and top-level domains use the default `VITE_BASE_PATH=/`. For repository GitHub Pages, set `VITE_BASE_PATH=/personal-portfolio/` before building and deploy `dist/`. Internal links, résumé assets, route matching, canonical URLs, and sitemap paths use this base.
+- Directory URLs and their explicit `index.html` equivalents render the same page.
+- Social-image URLs, canonical URLs, and the sitemap use `VITE_SITE_URL` when provided. Otherwise, Vercel's `VERCEL_PROJECT_PRODUCTION_URL` (or `VERCEL_URL`) supplies the origin. On other hosts set the actual HTTPS origin explicitly; put any deployment subpath in `VITE_BASE_PATH`, not `VITE_SITE_URL`.
+- `npm run check` runs route/metadata tests, lint, TypeScript checks, and the production build. GitHub Actions checks both root and repository-subpath builds on pushes and pull requests. Tests require Node 22.12+.
+- FocusMate's benchmark measures face presence on 200 frames, not attention accuracy. The UI submits frames every 200 ms; no 30 FPS or distraction-reduction claim is made.
+- InterceptIQ's public prediction/replay demo is separate from its local API/database/queue service.

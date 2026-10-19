@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/paths";
 import type { Project } from "@/data/projects";
 import { ArrowRight, ExternalLink, Github } from "@/components/Icons";
 import { ProjectVisual } from "@/components/TechnicalVisuals";
@@ -42,7 +43,7 @@ export function ProjectSection({ project, reversed = false }: { project: Project
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href={`/projects/${project.slug}/`} className="button-primary focus-ring">
+            <a href={withBase(`/projects/${project.slug}/`)} className="button-primary focus-ring">
               View case study <ArrowRight className="size-4" />
             </a>
             <a href={project.github} target="_blank" rel="noreferrer" className="button-secondary focus-ring">
@@ -54,6 +55,8 @@ export function ProjectSection({ project, reversed = false }: { project: Project
               </a>
             ) : null}
           </div>
+
+          {project.demoNote ? <p className="mt-5 text-sm leading-6 text-[var(--text-secondary)]">{project.demoNote}</p> : null}
 
           <p className="mt-7 border-l border-[var(--border-strong)] pl-4 font-mono text-[10px] leading-5 text-[var(--text-muted)]">
             {project.disclaimer}
