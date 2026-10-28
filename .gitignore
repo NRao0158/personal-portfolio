@@ -8,3 +8,10 @@ dist/
 .vercel/
 .DS_Store
 *.log
+
+# Python backend
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
