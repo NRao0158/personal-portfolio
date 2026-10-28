@@ -72,6 +72,7 @@ requirements after dependency changes with:
 
 ```powershell
 uv export --locked --no-dev --no-emit-project --no-hashes --output-file requirements.txt
+Copy-Item requirements.txt ../requirements.txt
 ```
 
 Push to `main` to trigger the existing Vercel production deployment.

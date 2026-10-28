@@ -50,7 +50,7 @@ success/error responses, and storage limitations.
 Vercel keeps its Vite framework preset. `vercel.json` installs/builds `frontend/`,
 serves `frontend/dist`, and rewrites `/api/*` to the Python ASGI adapter in
 `api/index.py`. That adapter imports the single application in `backend/main.py`.
-`requirements.txt` points to the backend's exported, pinned runtime dependencies.
+`requirements.txt` mirrors the backend's exported, pinned runtime dependencies for Vercel.
 Keep `VITE_SITE_URL` set to the existing production origin.
 
 Inquiries are classroom demo records, not a working email/contact service.
